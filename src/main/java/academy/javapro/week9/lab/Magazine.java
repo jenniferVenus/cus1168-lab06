@@ -16,13 +16,16 @@ public class Magazine implements LibraryItem {
      */
     public Magazine(String title, int issueNumber, String publicationDate) {
         if (title == null || title.trim().isEmpty()) {
-            // TODO: Throw an IllegalArgumentException with the message "Title cannot be null or empty".
+
+            throw new IllegalArgumentException ("Title cannot be null or empty");
         }
         if (issueNumber <= 0) {
-            // TODO: Throw an IllegalArgumentException with the message "Issue number must be positive".
+
+            throw new IllegalArgumentException ("Issue number must be positive");
         }
         if (publicationDate == null || publicationDate.trim().isEmpty()) {
-            // TODO: Throw an IllegalArgumentException with the message "Publication date cannot be null or empty".
+
+            throw new IllegalArgumentException ("Publication date cannot be null or empty");
         }
 
         this.title = title;
@@ -35,8 +38,7 @@ public class Magazine implements LibraryItem {
      * @return the issue number
      */
     public int getIssueNumber() {
-        // TODO: return the issueNumber field.
-        throw new UnsupportedOperationException("Method not implemented");
+        return issueNumber;
     }
 
     /**
@@ -44,27 +46,29 @@ public class Magazine implements LibraryItem {
      * @return the publication date
      */
     public String getPublicationDate() {
-        // TODO: return the publicationDate field.
-        throw new UnsupportedOperationException("Method not implemented");
+        return publicationDate;
+ 
     }
 
     @Override
     public String getTitle() {
-        // TODO: return the title field.
-        throw new UnsupportedOperationException("Method not implemented");
+        return title;
+
+
     }
 
     @Override
     public String getItemType() {
-        // TODO: return "Magazine".
-        throw new UnsupportedOperationException("Method not implemented");
+        return "Magazine";
+   
     }
 
-    // TODO: Implement the getUniqueIdentifier method from the LibraryItem interface.
     @Override
     public String getUniqueIdentifier() {
-        // TODO: Return the title of the magazine followed by a hyphen and the issue number.
-        throw new UnsupportedOperationException("Method not implemented");
+
+        String result = getTitle() + "-" + getIssueNumber();
+        return result;
+
     }
 
     @Override
@@ -87,12 +91,11 @@ public class Magazine implements LibraryItem {
 
     @Override
     public int hashCode() {
-        // TODO: Create int result variable and assign title.hashCode() to it.
 
-        // TODO: Multiply result by 31 and add issueNumber to it.
+        int result = title.hashCode();
 
-        // TODO: Return the result.
+        int updatedResult = result * 31 + getIssueNumber();
 
-        throw new UnsupportedOperationException("Method not implemented");
+        return updatedResult;
     }
 }
